@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
             disabledRange: DisabledRange(
               initTime: _disabledInitTime,
               endTime: _disabledEndTime,
-              disabledRangeColor: Colors.grey,
+              disabledRangeColor: Colors.transparent,
               errorColor: Colors.red,
             ),
             height: 260.0,
@@ -87,15 +87,15 @@ class _MyHomePageState extends State<MyHomePage> {
             onSelectionChange: _updateLabels,
             onSelectionEnd: (start, end, isDisableRange) => print(
                 'onSelectionEnd => init : ${start.h}:${start.m}, end : ${end.h}:${end.m}, isDisableRange: $isDisableRange'),
-            primarySectors: _clockTimeFormat.value,
-            secondarySectors: _clockTimeFormat.value * 2,
+            primarySectors: 0,
+            secondarySectors: 0,
             decoration: TimePickerDecoration(
               baseColor: Color(0xFF1F2633),
-              pickerBaseCirclePadding: 15.0,
+              pickerBaseCirclePadding: 0,
               sweepDecoration: TimePickerSweepDecoration(
-                pickerStrokeWidth: 30.0,
+                pickerStrokeWidth: 18.0,
                 pickerColor: _isSleepGoal ? Color(0xFF3CDAF7) : Colors.white,
-                showConnector: true,
+                showConnector: false,
               ),
               initHandlerDecoration: TimePickerHandlerDecoration(
                 color: Color(0xFF141925),
@@ -117,18 +117,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Color(0xFF3CDAF7),
                 ),
               ),
-              primarySectorsDecoration: TimePickerSectorDecoration(
-                color: Colors.white,
-                width: 1.0,
-                size: 4.0,
-                radiusPadding: 25.0,
-              ),
-              secondarySectorsDecoration: TimePickerSectorDecoration(
-                color: Color(0xFF3CDAF7),
-                width: 1.0,
-                size: 2.0,
-                radiusPadding: 25.0,
-              ),
               clockNumberDecoration: TimePickerClockNumberDecoration(
                 defaultTextColor: Colors.white,
                 defaultFontSize: 12.0,
@@ -138,22 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 clockIncrementTimeFormat: _clockIncrementTimeFormat,
               ),
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(62.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    '${intl.NumberFormat('00').format(_intervalBedTime.h)}Hr ${intl.NumberFormat('00').format(_intervalBedTime.m)}Min',
-                    style: TextStyle(
-                      fontSize: 14.0,
-                      color: _isSleepGoal ? Color(0xFF3CDAF7) : Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            child: SizedBox.shrink(),
           ),
           Container(
             width: 300.0,
